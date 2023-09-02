@@ -125,7 +125,7 @@ function sensors_readings () {
         Humidity = pins.map(
         Humidity,
         0,
-        1023,
+        700,
         0,
         100
         )
