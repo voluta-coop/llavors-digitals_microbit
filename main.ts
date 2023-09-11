@@ -179,7 +179,7 @@ let Ok = 0
 let primera_lectura = 0
 let i = 0
 let n = 0
-wappsto.configureWifi("Miphone", "12345678")
+wappsto.configureWifi("Nom_Xarxa_WiFi", "Contrasenya")
 wappsto.configureName("Llavors-Digitals")
 wappsto.configureValue(1, "Humitat", WappstoValueTemplate.Number)
 wappsto.configureValue(2, "Lluminositat", WappstoValueTemplate.Light)
