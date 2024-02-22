@@ -141,8 +141,8 @@ function lectura_sensors () {
         Humitat = Humitat / n
         Humitat = pins.map(
         Humitat,
-        0,
-        700,
+        530,
+        270,
         0,
         100
         )
@@ -179,12 +179,12 @@ let Lluminositat = 0
 let Primera_Lectura = 0
 let i = 0
 let n = 0
-wappsto.configureWifi("Nom_Xarxa_WiFi", "Contrasenya")
-wappsto.configureName("Llavors-Digitals")
-wappsto.configureValue(1, "Humitat", WappstoValueTemplate.Number)
-wappsto.configureValue(2, "Lluminositat", WappstoValueTemplate.Light)
+wappsto.configureWifi("Semillas Digitales", "12345678")
+wappsto.configureName("Semillas-Digitales")
+wappsto.configureValue(1, "Humedad", WappstoValueTemplate.Number)
+wappsto.configureValue(2, "Luminosidad", WappstoValueTemplate.Light)
 wappsto.configureValue(3, "Temperatura", WappstoValueTemplate.Temperature)
-n = 20
+n = 40
 i = 0
 Primera_Lectura = 0
 basic.forever(function () {
