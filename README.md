@@ -1,24 +1,19 @@
+## Utilízalo como extensión
 
-> Obre aquesta pàgina a [https://voluta-coop.github.io/llavors-digitals_microbit/](https://voluta-coop.github.io/llavors-digitals_microbit/)
+* Abre [https://makecode.microbit.org/](https://makecode.microbit.org/)
+* Haz clic a *Proyecto nuevo*
+* Haz clic a *Extensiones* bajo el menú de la rueda dentada
+* buscar https://github.com/voluta-coop/llavors-digitals_microbit/tree/CAS e importar
 
-## Utilitza-ho com a extensió
+## Edita este proyecto
 
-Aquest dipòsit es pot afegir com una **extensió** a MakeCode.
+Para editar este repositorio a MakeCode.
 
-* obre [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* fes clic a **Projecte nou**
-* fes clic a **Extensions** sota el menú de la roda dentada
-* cercar **https://github.com/voluta-coop/llavors-digitals_microbit** i importar
+* Abre [https://makecode.microbit.org/](https://makecode.microbit.org/)
+* HAz clic a *Importa* y después a *Importa URL*
+* Pega https://github.com/voluta-coop/llavors-digitals_microbit y clica importar
 
-## Edita aquest projecte
-
-Per editar aquest repositori a MakeCode.
-
-* obre [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* fes clic a ** Importa** i després a ** Importa URL**
-* enganxa **https://github.com/voluta-coop/llavors-digitals_microbit** i clica importar
-
-#### Metadades (utilitzades per a la cerca, renderització)
+## Metadatos (utilizadas para la búsqueda, renderización)
 
 * for PXT/microbit
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
