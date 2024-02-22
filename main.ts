@@ -1,14 +1,17 @@
-function Gestio_lluminositat () {
-    if (Lluminositat < 20) {
-        Avis_Lluminositat = 1
-    } else {
-        Avis_Lluminositat = 0
+function Gestion_temperatura () {
+    if (Temperatura < 30 && Temperatura > 15) {
+        Aviso_Temp_Max = 0
+        Aviso_Temp_Max = 0
+    } else if (Temperatura > 30) {
+        Aviso_Temp_Max = 1
+    } else if (Temperatura < 15) {
+        Aviso_Temp_Min = 1
     }
 }
 function Avisos_pantalla () {
     let Ok_prev = 0
     if (Ok != 0) {
-        if (Avis_Lluminositat) {
+        if (Aviso_Luminosidad) {
             images.createImage(`
                 . # . . .
                 . # . . .
@@ -33,7 +36,7 @@ function Avisos_pantalla () {
                 . . . . .
                 `).scrollImage(1, 200)
         }
-        if (Avis_Humitat) {
+        if (Aviso_Humedad) {
             images.createImage(`
                 # . . # .
                 # . . # .
@@ -58,7 +61,7 @@ function Avisos_pantalla () {
                 . . . . .
                 `).scrollImage(1, 200)
         }
-        if (Avis_Temp_Max) {
+        if (Aviso_Temp_Max) {
             images.createImage(`
                 # # # # #
                 . . # . .
@@ -82,7 +85,7 @@ function Avisos_pantalla () {
                 . . . . .
                 . . . . .
                 `).scrollImage(1, 200)
-        } else if (Avis_Temp_Min) {
+        } else if (Aviso_Temp_Min) {
             images.createImage(`
                 # # # # #
                 . . # . .
@@ -111,71 +114,68 @@ function Avisos_pantalla () {
         images.iconImage(IconNames.Happy).showImage(0)
     }
 }
-function Gestio_humitat () {
-    if (Humitat < 35) {
-        Avis_Humitat = 1
+function Gestion_luminosidad () {
+    if (Luminosidad < 20) {
+        Aviso_Luminosidad = 1
     } else {
-        Avis_Humitat = 0
+        Aviso_Luminosidad = 0
     }
 }
-function Gestio_temperatura () {
-    if (Temperatura < 30 && Temperatura > 15) {
-        Avis_Temp_Max = 0
-        Avis_Temp_Max = 0
-    } else if (Temperatura > 30) {
-        Avis_Temp_Max = 1
-    } else if (Temperatura < 15) {
-        Avis_Temp_Min = 1
+function Gestion_humedad () {
+    if (Humedad < 35) {
+        Aviso_Humedad = 1
+    } else {
+        Aviso_Humedad = 0
     }
 }
-function lectura_sensors () {
+function lectura_sensores () {
     if (i < n) {
         Temperatura = Temperatura + input.temperature()
-        Lluminositat = Lluminositat + input.lightLevel()
-        Humitat = Humitat + pins.analogReadPin(AnalogPin.P1)
+        Luminosidad = Luminosidad + input.lightLevel()
+        Humedad = Humedad + pins.analogReadPin(AnalogPin.P1)
         i = i + 1
     }
     if (i == n) {
         Temperatura = Temperatura / n
-        Lluminositat = Lluminositat / n
-        Humitat = Humitat / n
-        Humitat = pins.map(
-        Humitat,
+        Luminosidad = Luminosidad / n
+        Humedad = Humedad / n
+        Humedad = pins.map(
+        Humedad,
         530,
         270,
         0,
         100
         )
-        Lluminositat = pins.map(
-        Lluminositat,
+        Luminosidad = pins.map(
+        Luminosidad,
         0,
         255,
         0,
         100
         )
         Primera_Lectura = 1
-        Gestio_lluminositat()
-        Gestio_temperatura()
-        Gestio_humitat()
-        Ok = Avis_Lluminositat + (Avis_Humitat + (Avis_Temp_Max + Avis_Temp_Min))
+        Gestion_luminosidad()
+        Gestion_temperatura()
+        Gestion_humedad()
+        Ok = Aviso_Luminosidad + (Aviso_Humedad + (Aviso_Temp_Max + Aviso_Temp_Min))
         Avisos_pantalla()
-        wappsto.sendNumberToWappsto(Humitat, 1, WappstoTransmit.ASAP)
-        wappsto.sendNumberToWappsto(Lluminositat, 2, WappstoTransmit.ASAP)
+        wappsto.sendNumberToWappsto(Humedad, 1, WappstoTransmit.ASAP)
+        wappsto.sendNumberToWappsto(Luminosidad, 2, WappstoTransmit.ASAP)
         wappsto.sendNumberToWappsto(Temperatura, 3, WappstoTransmit.ASAP)
         Temperatura = 0
-        Lluminositat = 0
-        Humitat = 0
+        Luminosidad = 0
+        Humedad = 0
         i = 0
     }
 }
-let Temperatura = 0
-let Humitat = 0
-let Avis_Temp_Min = 0
-let Avis_Temp_Max = 0
-let Avis_Humitat = 0
+let Humedad = 0
+let Luminosidad = 0
+let Aviso_Humedad = 0
+let Aviso_Luminosidad = 0
 let Ok = 0
-let Avis_Lluminositat = 0
-let Lluminositat = 0
+let Aviso_Temp_Min = 0
+let Aviso_Temp_Max = 0
+let Temperatura = 0
 let Primera_Lectura = 0
 let i = 0
 let n = 0
@@ -188,5 +188,5 @@ n = 40
 i = 0
 Primera_Lectura = 0
 basic.forever(function () {
-    lectura_sensors()
+    lectura_sensores()
 })
