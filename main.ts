@@ -121,7 +121,7 @@ function Gestio_humitat () {
 function Gestio_temperatura () {
     if (Temperatura < 30 && Temperatura > 15) {
         Avis_Temp_Max = 0
-        Avis_Temp_Max = 0
+        Avis_Temp_Min = 0
     } else if (Temperatura > 30) {
         Avis_Temp_Max = 1
     } else if (Temperatura < 15) {
@@ -136,13 +136,13 @@ function lectura_sensors () {
         i = i + 1
     }
     if (i == n) {
-        Temperatura = Temperatura / n
+        Temperatura = Temperatura / n - 3
         Lluminositat = Lluminositat / n
         Humitat = Humitat / n
         Humitat = pins.map(
         Humitat,
-        0,
-        700,
+        530,
+        280,
         0,
         100
         )
@@ -179,9 +179,8 @@ let Lluminositat = 0
 let Primera_Lectura = 0
 let i = 0
 let n = 0
-wappsto.configureWifi("Nom_Xarxa_WiFi", "Contrasenya")
-wappsto.configureName("Llavors-Digitals")
-wappsto.configureValue(1, "Humitat", WappstoValueTemplate.Number)
+wappsto.configureName("Semillas-Digitales")
+wappsto.configureValue(1, "Humedad", WappstoValueTemplate.Number)
 wappsto.configureValue(2, "Lluminositat", WappstoValueTemplate.Light)
 wappsto.configureValue(3, "Temperatura", WappstoValueTemplate.Temperature)
 n = 20
